@@ -17,12 +17,13 @@ using System.Threading.Tasks;
             Console.CancelKeyPress += new ConsoleCancelEventHandler(myHandler);
             while (true)
             {
+               
                 Console.Write("Press any key, or 'X' to quit, or ");
                 Console.WriteLine("CTRL+C to interrupt the read operation:");
 
                 // Start a console read operation. Do not display the input.
                 cki = Console.ReadKey(true);
-
+                Console.Beep();// beeps when a key is typed
                 // Announce the name of the key that was pressed .
                 Console.WriteLine($"  Key pressed: {cki.Key}\n");
 
@@ -33,6 +34,8 @@ using System.Threading.Tasks;
 
         protected static void myHandler(object sender, ConsoleCancelEventArgs args)
         {
+            Console.Beep(110,1000); //beeps for 1 second when a special key is typed on the 110 frequency
+
             Console.WriteLine("\nThe read operation has been interrupted.");
 
             Console.WriteLine($"  Key pressed: {args.SpecialKey}");
